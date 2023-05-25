@@ -1,0 +1,7 @@
+Add 2 new classes to our NYU Person set of classes. The first should be:
+NYUMajor with properties of  Majorname (String), Chair(Faculty), RequiredCredits(int)
+
+The second class is:
+Transcript: with properties of  EarnedCredits, CoursesTaken(Array of coursename (string))
+Write  a Driver program that creates a students and associated classes. Then clone the student. 
+The cloned students should be  objects with a references to the the same major and advisor object  but having a different set of courses taken object.
