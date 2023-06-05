@@ -1,5 +1,3 @@
-package Week3;
-
 public class Recitation {
     public class SinglyLinkedList<E>{
 
