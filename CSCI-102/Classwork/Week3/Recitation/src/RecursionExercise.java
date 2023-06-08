@@ -3,7 +3,9 @@ public class RecursionExercise{
     // call a recursive routine that returns the string in reverse order AND removes vowels(a,e,i,o,u).
 
     public static void main(String[] args){
-        String str = "Hello World";
+        System.out.println(reverse("hello"));
+        System.out.println(findSmallest(new int[]{1,2,3,4,5,6,7,8,9,10}, 9));
+        System.out.println(convert(12439));
     }
 
     // reverse the string and remove vowels
