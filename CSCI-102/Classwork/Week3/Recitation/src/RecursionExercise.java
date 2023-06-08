@@ -1,11 +1,16 @@
+import java.util.*;
+
 public class RecursionExercise{
 
     // call a recursive routine that returns the string in reverse order AND removes vowels(a,e,i,o,u).
-
     public static void main(String[] args){
         System.out.println(reverse("hello"));
-        System.out.println(findSmallest(new int[]{1,2,3,4,5,6,7,8,9,10}, 9));
+        
         System.out.println(convert(12439));
+
+        int[] arr = createArray();
+        System.out.println(Arrays.toString(arr));
+        System.out.println(findSmallest(arr, 0));
     }
 
     // reverse the string and remove vowels
@@ -25,12 +30,26 @@ public class RecursionExercise{
     }
 
     // Populate a 20 element array with random numbers from 1 to 100. Write a recursive routine to find the smallest number.
+    /*
+     * Create a method that forms the array with 2 random numbers
+     */
+    public static int[] createArray(){
+        int[] arr = new int[20];
+        for(int i = 0; i < arr.length; i++){
+            arr[i] = (int)(Math.random() * 100) + 1;
+        }
+        return arr;
+    }
+
+    /*
+     * Create a method that finds the smallest number in the array
+     */
     public static int findSmallest(int[] arr, int index){
-        if(index == 0){
+        if(index == arr.length - 1){
             return arr[index];
         }
         else{
-            int smallest = findSmallest(arr, index - 1);
+            int smallest = findSmallest(arr, index + 1);
             if(arr[index] < smallest){
                 return arr[index];
             }
