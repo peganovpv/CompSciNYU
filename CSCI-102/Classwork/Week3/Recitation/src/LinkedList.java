@@ -1,4 +1,5 @@
-public class Recitation {
+package src;
+public class LinkedList {
     public class SinglyLinkedList<E>{
 
         private class Node<E> {
