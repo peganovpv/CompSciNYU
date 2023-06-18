@@ -8,6 +8,18 @@ In this project you will simulate the operating system’s selection of processe
 Starting process list with resources in ( ):  P1(A);P2(B); P3(B,C);P4(C);P5(A,B,C); P6(B,C);P7(A);P8(A);P9(B);P10(C) 
 
 There are 2 parts to the assignment, both parts have the same output of the number of cycles , and final length of the queue.
-Part A :  Read a one line from the Console  where the  line  has the format shown here (and  above): 
+
+Part A :  
+Read a one line from the Console  where the  line  has the format shown here (and  above): 
 P1(A);P2(B); P3(B,C);P4(C);P5(A,B,C); P6(B,C) ;P7(A);P8(A);P9(B);P10(C) 
 For each input string from the Console,  assign the processes to a list, then execute the list and determine the number of cycles to completely execute the processes. In our example the answer is 6
+
+Part B:   
+Randomly generate a list of 20 processes. Start executing processes as before. Randomly select 1,2 or 3 resources (A,B,C) for each process. But at the end of each cycle (regardless of how many processes were run), add 2 more process to the end of the list with 1,2,3 random resources. Output the number of cycles needed to empty the list of processes, but if the list does not empty by cycle 1000, then output the number of processes left (length of the list). Output the length of the list of processes every 100th cycle to watch its growth:
+
+Length of processes at cycle 100: 104
+Length of processes at cycle 200: 107
+Length of processes at cycle 300: 63
+Length of processes at cycle 400: 139
+
+^Number are samples only , your numbers should be different.
