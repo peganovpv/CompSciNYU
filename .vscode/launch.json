@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ExamReview",
+            "request": "launch",
+            "mainClass": "ExamReview",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Part_A",
             "request": "launch",
             "mainClass": "Part_A",
