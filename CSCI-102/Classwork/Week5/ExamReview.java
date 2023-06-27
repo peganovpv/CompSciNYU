@@ -22,4 +22,19 @@ public class ExamReview {
         scn.close();
     }
 
+    public class Hello {
+        ArrayList<String> list = new ArrayList<String>();
+        Iterator<String> iter = list.iterator();
+        while (iter.hasNext()) {
+            System.out.println(iter.next());
+        }
+        // iterator with a for loop
+        for (Iterator<String> iter2 = list.iterator(); iter2.hasNext();) {
+            System.out.println(iter2.next());
+        }
+        for(String item : list) {
+            System.out.println(item);
+        }
+    }
+
 }
