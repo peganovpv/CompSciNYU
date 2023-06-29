@@ -1,3 +1,4 @@
+P1(A);P2(B);P3(B,C);P4(C);P5(A,B,C);P6(B,C);P7(A);P8(A);P9(B);P10(C)
 P1(C);P2(B);P3(A,B);P4(C);P5(A);P6(A,B);P7(B);P8(A);P9(B,C);P10(A)
 P1(A);P2(B,C);P3(C);P4(A,B);P5(A,B,C);P6(A,C);P7(B);P8(A);P9(B);P10(C)
 P1(B);P2(B,C);P3(A,C);P4(B);P5(A,B);P6(A);P7(C);P8(B,C);P9(B);P10(A,C)
