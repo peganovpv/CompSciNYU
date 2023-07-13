@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SampleExam",
+            "request": "launch",
+            "mainClass": "SampleExam",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Recitation",
             "request": "launch",
             "mainClass": "Recitation",
