@@ -2,12 +2,12 @@ package Components;
 
 import java.util.*;
 
-public class NumPlays {
+public class Plays {
 
     private int num;
     LinkedList<Player> players = new LinkedList<>();
 
-    NumPlays(int num) {
+    Plays(int num) {
         this.num = num;
     }
 

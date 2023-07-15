@@ -22,15 +22,16 @@ public class Main {
 
         // Print the results
         DecimalFormat df = new DecimalFormat("#.##");
-        System.out.println("Total Results for " + totalPlayed + " Games");
-        System.out.printf("%-30s %-30s %-30s %-30s %-30s%n", "", "A avg moves / % win", "B avg moves / % win", "C avg moves / % win", "D avg moves / % win");
+        System.out.println("\nTotal Results for " + totalPlayed + " Games\n");
+        System.out.printf("%-30s %-30s %-30s %-30s %-30s%n", "Game", "A: avg moves / win %", "B: avg moves / win %", "C: avg moves / win %", "D: avg moves / win %");
         for (int i = 1; i <= 4; i++) {
             System.out.printf("%-30s", games[i - 1]);
             for (int j = 0; j < i; j++) {
-                System.out.printf("%-30s", df.format(gameResults[i][j][0]) + " moves " + df.format(gameResults[i][j][1] * 100) + "%");
+                System.out.printf("%-30s", "avg: " + df.format(gameResults[i][j][0]) + " moves, win: " + df.format(gameResults[i][j][1] * 100) + "%");
             }
             System.out.println();
         }
+
 
     }
     

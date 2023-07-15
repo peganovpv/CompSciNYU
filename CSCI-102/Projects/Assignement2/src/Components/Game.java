@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Game {
 
-    DoubleLinkedList<NumPlays> gameBoard;
+    DoubleLinkedList<Plays> gameBoard;
     int numPlayers;
     Player[] players;
     Random random;
@@ -33,11 +33,11 @@ public class Game {
         gameBoard.addFirst(null);
         gameBoard.addLast(null); 
 
-        DoubleLinkedList.Node<NumPlays> prev = gameBoard.head;
-        DoubleLinkedList.Node<NumPlays> next = new DoubleLinkedList.Node<NumPlays>(null, null, null);
+        DoubleLinkedList.Node<Plays> prev = gameBoard.head;
+        DoubleLinkedList.Node<Plays> next = new DoubleLinkedList.Node<Plays>(null, null, null);
 
         for (int i = 0; i < 25; i++) {
-            next = new DoubleLinkedList.Node<>(new NumPlays(r.nextInt(10) + 1), prev, null);
+            next = new DoubleLinkedList.Node<>(new Plays(r.nextInt(10) + 1), prev, null);
 
             if (prev != null) {
                 prev.setNext(next);
@@ -59,13 +59,13 @@ public class Game {
         int currentPosition = player.getPosition();
         int newPosition = currentPosition + move;
 
-        DoubleLinkedList.Node<NumPlays> oldPositionSquare = gameBoard.head;
+        DoubleLinkedList.Node<Plays> oldPositionSquare = gameBoard.head;
         for (int i = 0; i < currentPosition; i++) {
             oldPositionSquare = oldPositionSquare.next;
         }
 
         if (newPosition <= 25) { 
-            DoubleLinkedList.Node<NumPlays> newPositionSquare = gameBoard.head;
+            DoubleLinkedList.Node<Plays> newPositionSquare = gameBoard.head;
             for (int i = 0; i < newPosition; i++) {
                 newPositionSquare = newPositionSquare.next;
             }
@@ -80,7 +80,7 @@ public class Game {
             } else {
                 if (newPosition - 7 > 0) {
                     player.setPosition(newPosition - 7);
-                    DoubleLinkedList.Node<NumPlays> newPositionSquare2 = gameBoard.head;
+                    DoubleLinkedList.Node<Plays> newPositionSquare2 = gameBoard.head;
                     for (int i = 0; i < newPosition - 7; i++) {
                         newPositionSquare2 = newPositionSquare2.next;
                     }
@@ -109,7 +109,7 @@ public class Game {
             player.reset();
         }
 
-        DoubleLinkedList.Node<NumPlays> t = gameBoard.head;
+        DoubleLinkedList.Node<Plays> t = gameBoard.head;
         for (int i = 0; i < 25; i++) {
             t = t.next;
             t.getElement().players = new LinkedList<>();
@@ -181,25 +181,36 @@ public class Game {
     }
 
     public void showBoard(StringBuilder res, double gameCount) {
-        
-        res.append("Game ").append((int) gameCount).append(System.lineSeparator());
 
-        DoubleLinkedList.Node<NumPlays> current = gameBoard.head.next;
-
+        res.append("=== Game ").append((int) gameCount).append(" ===\n");
+    
+        DoubleLinkedList.Node<Plays> current = gameBoard.head.next;
+        int count = 0;
+    
         while (current != null) {
-            for (int i = 0; i < 25; i++) {
-                if (i == 9 || i == 16) {
-                    res.append(System.lineSeparator());
-                }
-                res.append("").append(current.getElement().getNum()).append(" ");
-                for (int j = 0; j < current.getElement().getPlayers().size(); j++) {
-                    res.append(current.getElement().getPlayers().get(j).getName()).append(" ");
-                }
-                current = current.next;
+            count++;
+            // add dividers and row numbers
+            if (count == 1 || count == 10 || count == 17) {
+                res.append("-----Row ").append(count < 10 ? "1" : count < 17 ? "2" : "3").append("-----\n");
             }
+    
+            res.append("|").append(current.getElement().getNum()).append("| ");
+    
+            for (int j = 0; j < current.getElement().getPlayers().size(); j++) {
+                res.append("(").append(current.getElement().getPlayers().get(j).getName()).append(") ");
+            }
+    
+            // end of a row
+            if (count == 9 || count == 16 || count == 25) {
+                res.append("\n");
+            }
+            
+            current = current.next;
         }
-        res.append(System.lineSeparator());
+    
+        res.append("====================\n");
     }
+    
 }
 
 
