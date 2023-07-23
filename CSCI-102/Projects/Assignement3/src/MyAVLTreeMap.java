@@ -1,22 +1,31 @@
 package com;
 
 
+import java.util.Arrays;
 import java.util.Comparator;
-import java.util.TreeMap;
 
 import net.datastructures.*;
 
-
 public class MyAVLTreeMap<K,V> extends TreeMap<K,V> {
-
+	
+	private String[][] arr; 
+	
   /** Constructs an empty map using the natural ordering of keys. */
-  public MyAVLTreeMap() { super(); }
+  public MyAVLTreeMap() { 
+	  super(); 	
+	  arr = new String[100][100];
+	  for (String[] row : arr) { // filling with spaces
+	    Arrays.fill(row, " ");
+	  }
+  }
 
   /**
    * Constructs an empty map using the given comparator to order keys.
    * @param comp comparator defining the order of keys in the map
    */
   public MyAVLTreeMap(Comparator<K> comp) { super(comp); }
+  
+  MyAVLTreeMap tree;
 
   /** Returns the height of the given tree position. */
   protected int height(Position<Entry<K,V>> p) {
@@ -94,36 +103,35 @@ public class MyAVLTreeMap<K,V> extends TreeMap<K,V> {
     return true;
   }
 
-  public void parent (Position<Entry<K,V>> p) {
-    System.out.println("Parent of " + p.getElement().getKey() + " is " + parent(p).getElement().getKey());
-  }
-
-  public void left (Position<Entry<K,V>> p) {
-    System.out.println("Left of " + p.getElement().getKey() + " is " + left(p).getElement().getKey());
-  } 
-
-  public void right (Position<Entry<K,V>> p) {
-    System.out.println("Right of " + p.getElement().getKey() + " is " + right(p).getElement().getKey());
-  }
-
-  public void dump () {
-    for (Position<Entry<K,V>> p : tree.positions()) {
-      System.out.println(p.getElement().getKey());
-    }
-  }
-
-  public boolean isBalanced () {
-    for (Position<Entry<K,V>> p : tree.positions()) {
-      if (!isBalanced(p)) {
-        return false;
+  
+  public void printAVLTree() {
+      printTree(0, 50, 0, this.root()); // start from the root
+      for (String[] row : arr) { // printing 2D array
+          for (String cell : row)
+              System.out.print(cell);
+          System.out.println();
       }
-    }
-    return true;
   }
 
-  public boolean isInternal (Position<Entry<K,V>> p) {
-    return tree.isInternal(p);
-  }
+  private void printTree(int height, int column, int direction, Position<Entry<K, V>> p) {
+      if (p == null || p.getElement() == null) 
+          return;
+      
+      arr[height][column] = p.getElement().getKey().toString(); // current node
+      
+      int newColumn;
+      if (direction == -1) { // left child
+          newColumn = column - (50 / (height + 2)); // calculate new column
+          arr[height + 1][newColumn] = "/"; // print slash
+      } else if (direction == 1) { // right child
+          newColumn = column + (50 / (height + 2)); // calculate new column
+          arr[height + 1][newColumn] = "\\"; // print backslash
+      } else { // root node
+          newColumn = column;
+      }
 
-   
+      printTree(height + 2, newColumn, -1, this.left(p)); // left child
+      printTree(height + 2, newColumn, 1, this.right(p)); // right child
+  }
+ 
 }
