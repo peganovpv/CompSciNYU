@@ -1,7 +1,3 @@
-import net.datastructures.Entry;
-import net.datastructures.Position;
-
-//import net.datastructures.*;
 public class ProgProject4 {
 	public static void main(String[] args) {
 		String[] inputs = {

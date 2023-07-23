@@ -1,10 +1,14 @@
+package com;
+
+
+import java.util.Comparator;
+import java.util.TreeMap;
 
 import net.datastructures.*;
-import java.util.Comparator;
 
 
 public class MyAVLTreeMap<K,V> extends TreeMap<K,V> {
-	
+
   /** Constructs an empty map using the natural ordering of keys. */
   public MyAVLTreeMap() { super(); }
 
@@ -89,10 +93,37 @@ public class MyAVLTreeMap<K,V> extends TreeMap<K,V> {
     }
     return true;
   }
-  
-  public void printTree() {
-	  // Put your code to print AVL tree here
-	  System.out.println("Print of tree");
+
+  public void parent (Position<Entry<K,V>> p) {
+    System.out.println("Parent of " + p.getElement().getKey() + " is " + parent(p).getElement().getKey());
   }
+
+  public void left (Position<Entry<K,V>> p) {
+    System.out.println("Left of " + p.getElement().getKey() + " is " + left(p).getElement().getKey());
+  } 
+
+  public void right (Position<Entry<K,V>> p) {
+    System.out.println("Right of " + p.getElement().getKey() + " is " + right(p).getElement().getKey());
+  }
+
+  public void dump () {
+    for (Position<Entry<K,V>> p : tree.positions()) {
+      System.out.println(p.getElement().getKey());
+    }
+  }
+
+  public boolean isBalanced () {
+    for (Position<Entry<K,V>> p : tree.positions()) {
+      if (!isBalanced(p)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public boolean isInternal (Position<Entry<K,V>> p) {
+    return tree.isInternal(p);
+  }
+
    
 }

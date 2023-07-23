@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ProgProject4",
+            "request": "launch",
+            "mainClass": "ProgProject4",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "MainClass",
             "request": "launch",
             "mainClass": "MainClass",
