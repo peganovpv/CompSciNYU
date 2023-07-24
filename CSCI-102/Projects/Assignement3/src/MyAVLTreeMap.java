@@ -1,22 +1,14 @@
-package com;
-
-
 import java.util.Arrays;
 import java.util.Comparator;
 
 import net.datastructures.*;
 
 public class MyAVLTreeMap<K,V> extends TreeMap<K,V> {
-	
-	private String[][] arr; 
+
 	
   /** Constructs an empty map using the natural ordering of keys. */
   public MyAVLTreeMap() { 
 	  super(); 	
-	  arr = new String[100][100];
-	  for (String[] row : arr) { // filling with spaces
-	    Arrays.fill(row, " ");
-	  }
   }
 
   /**
@@ -24,8 +16,6 @@ public class MyAVLTreeMap<K,V> extends TreeMap<K,V> {
    * @param comp comparator defining the order of keys in the map
    */
   public MyAVLTreeMap(Comparator<K> comp) { super(comp); }
-  
-  MyAVLTreeMap tree;
 
   /** Returns the height of the given tree position. */
   protected int height(Position<Entry<K,V>> p) {
@@ -103,35 +93,75 @@ public class MyAVLTreeMap<K,V> extends TreeMap<K,V> {
     return true;
   }
 
-  
-  public void printAVLTree() {
-      printTree(0, 50, 0, this.root()); // start from the root
-      for (String[] row : arr) { // printing 2D array
-          for (String cell : row)
-              System.out.print(cell);
-          System.out.println();
+/**
+ * Display AVL tree on console.
+ */
+public void printTree() {
+
+  // Define 2D grid to represent the tree
+  char[][] grid = new char[100][100];
+
+  // Obtain the root of the tree
+  Position<Entry<K,V>> rootPos = this.root();
+
+  // Set initial positions
+  int yPos = 0;
+  int xPos = 32;
+
+  // Begin tree traversal from root
+  traverseTree(rootPos, yPos, xPos, 16, grid);
+
+  // Loop through grid and print tree
+  for (int i = 0; i < grid.length; i++) {
+    for (int j = 0; j < grid[i].length; j++) {
+      char currentCell = grid[i][j];
+      if (currentCell != 0) {
+        System.out.print(grid[i][j]);
+      } else {
+        System.out.print(" ");
       }
+    }
+    System.out.println("");
+  }
+}
+
+/**
+* Traverses the tree recursively and fills values in grid.
+* @param node, is the current node
+* @param yPos, is the current y position in the grid
+* @param xPos, is the current x position in the grid
+* @param distance, is horizontal length from children to parent
+*/
+public void traverseTree(Position<Entry<K,V>> node, int yPos, int xPos, int distance, char[][] grid) {
+
+  // Stop if current node is null
+  if (node.getElement() == null) {
+      return;
   }
 
-  private void printTree(int height, int column, int direction, Position<Entry<K, V>> p) {
-      if (p == null || p.getElement() == null) 
-          return;
-      
-      arr[height][column] = p.getElement().getKey().toString(); // current node
-      
-      int newColumn;
-      if (direction == -1) { // left child
-          newColumn = column - (50 / (height + 2)); // calculate new column
-          arr[height + 1][newColumn] = "/"; // print slash
-      } else if (direction == 1) { // right child
-          newColumn = column + (50 / (height + 2)); // calculate new column
-          arr[height + 1][newColumn] = "\\"; // print backslash
-      } else { // root node
-          newColumn = column;
-      }
+  // Get key from the node and store its first character in grid
+  K key = node.getElement().getKey();
+  char keyChar = key.toString().charAt(0);
+  grid[yPos][xPos] = keyChar; 
 
-      printTree(height + 2, newColumn, -1, this.left(p)); // left child
-      printTree(height + 2, newColumn, 1, this.right(p)); // right child
+  // Recursion on left subtree if it exists
+  if (left(node).getElement() != null) {
+      grid[yPos + 1][xPos - (distance / 2)] = '/';
+      Position<Entry<K,V>> leftBranch = left(node);
+      int yPosLeft = yPos + 2;
+      int xPosLeft = xPos - distance;
+      traverseTree(leftBranch, yPosLeft, xPosLeft, distance / 2, grid);
+  } 
+
+  // Recursion on right subtree if it exists
+  if (right(node).getElement() != null) {
+      grid[yPos + 1][xPos + (distance / 2)] = '\\';
+      Position<Entry<K,V>> rightBranch = right(node);
+      int yPosRight = yPos + 2;
+      int xPosRight = xPos + distance;
+      traverseTree(rightBranch, yPosRight, xPosRight, distance / 2, grid);
   }
- 
+}
+
+
 }
