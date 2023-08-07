@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class DoublyLinkedList<E> {
  
@@ -260,33 +258,36 @@ public class DoublyLinkedList<E> {
    }
 
    public void Add(E letter, String direction) {
-        Node<E> newNode = new Node<>(letter, null, null, null, null, null, null);
-        switch (direction.toUpperCase()) {
+      Node<E> newNode = new Node<>(letter, null, null, null, null, null, null);
+      switch (direction.toUpperCase()) {
             case "NORTH": currentPosition.setNorth(newNode); break;
             case "EAST": currentPosition.setEast(newNode); break;
             case "SOUTH": currentPosition.setSouth(newNode); break;
             case "WEST": currentPosition.setWest(newNode); break;
         }
     }
-        public void Move(String direction) {
-        switch (direction.toUpperCase()) {
-            case "NORTH": currentPosition = currentPosition.getNorth(); break;
-            case "EAST": currentPosition = currentPosition.getEast(); break;
-            case "SOUTH": currentPosition = currentPosition.getSouth(); break;
-            case "WEST": currentPosition = currentPosition.getWest(); break;
-        }
+   public void Move(String direction) {
+      switch (direction.toUpperCase()) {
+        case "NORTH": currentPosition = currentPosition.getNorth(); break;
+        case "EAST": currentPosition = currentPosition.getEast(); break;
+        case "SOUTH": currentPosition = currentPosition.getSouth(); break;
+        case "WEST": currentPosition = currentPosition.getWest(); break;
+      }
     }
 
     public void Print() {
-        // Traverse the tree and print the elements
-        // Assuming the tree is not cyclic
-        p(root, new HashSet<>());
+
+        p(root, new ArrayList<>());
+        System.out.println();
     }
 
-    private void p(Node<E> node, Set<Node<E>> visited) {
-        if (node == null || visited.contains(node)) return;
+    private void p(Node<E> node, ArrayList<Node<E>> visited) {
+        if (node == null || visited.contains(node)){
+            return;
+        }
         visited.add(node);
         System.out.print(node.getElement() + " ");
+
         p(node.getNorth(), visited);
         p(node.getEast(), visited);
         p(node.getSouth(), visited);
