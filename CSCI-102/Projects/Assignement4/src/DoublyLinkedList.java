@@ -294,8 +294,6 @@ public class DoublyLinkedList<E> {
     }
 
     public void PrintLewisStructure() {
-        // Traverse the tree and print the elements
-        // Assuming the tree is not cyclic
         ArrayList<Node<E>> visited = new ArrayList<>();
         pls(root, visited, "");
     }
