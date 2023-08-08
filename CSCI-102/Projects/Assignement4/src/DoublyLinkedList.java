@@ -277,21 +277,23 @@ public class DoublyLinkedList<E> {
 
     public void Print() {
 
-        p(root, new ArrayList<>());
+        p(root);
         System.out.println();
     }
 
-    private void p(Node<E> node, ArrayList<Node<E>> visited) {
-        if (node == null || visited.contains(node)){
+    private void p(Node<E> node) {
+      
+        if (node == null) {
             return;
         }
-        visited.add(node);
+
         System.out.print(node.getElement() + " ");
 
-        p(node.getNorth(), visited);
-        p(node.getEast(), visited);
-        p(node.getSouth(), visited);
-        p(node.getWest(), visited);
+        p(node.getNorth());
+        p(node.getEast());
+        p(node.getSouth());
+        p(node.getWest());
+
     }
 
     public void PrintLewisStructure() {
