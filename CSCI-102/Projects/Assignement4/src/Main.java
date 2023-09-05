@@ -5,19 +5,12 @@ public class Main {
         DoublyLinkedList<Character> dll = new DoublyLinkedList<Character>();
 
         dll.Root('A');
+		dll.Add('B', "South");
+		dll.Add('C', "East");
+		dll.Add('D', "West");
+		dll.Add('E', "North");
         
-        dll.Add('B', "East");
-        
-        dll.Move("East");
-        
-        dll.Add('C', "South");
-
-        dll.Move("South");
-
-        dll.Add('D', "West");
-
-        dll.Move("West");
-        
+        dll.Print();
         dll.PrintLewisStructure();
         
     }
