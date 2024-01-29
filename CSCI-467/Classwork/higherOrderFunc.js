@@ -48,11 +48,9 @@ debuggedParseInt("10", 2)
 // prints out 11 and 2 and return 3
 
 const debug = (cb) => {
-    return (str, base) => {
-        const result = cb(str, base)
-        console.log(result)
-        console.log(base)
-        return result
+    return (...args) => {
+        console.log(...args)
+        return cb(...args)
     }
 }
 
