@@ -1,0 +1,38 @@
+<fulfillmentToken fulfillmentType="loan" auth="user" xmlns="http://ns.adobe.com/adept">
+  <distributor>urn:uuid:9cb786e8-586a-4950-8901-fff8d2ee6025</distributor>
+  <operatorURL>https://acs.ebookcentral.proquest.com/fulfillment</operatorURL>
+  <transaction>4812186_435548863</transaction>
+  <purchase>2024-02-13T18:41:47+00:00</purchase>
+  <expiration>2024-02-14T00:41:47+00:00</expiration>
+  <resourceItemInfo>
+    <resource>urn:uuid:00000000-0000-0000-0000-000004812186</resource>
+    <resourceItem>0</resourceItem>
+    <metadata>
+      <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/">Probability and Computing</dc:title>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mitzenmacher, Michael;Upfal, Eli;</dc:creator>
+      <dc:publisher xmlns:dc="http://purl.org/dc/elements/1.1/">Cambridge University Press</dc:publisher>
+      <dc:identifier xmlns:dc="http://purl.org/dc/elements/1.1/">4812186</dc:identifier>
+      <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">application/pdf</dc:format>
+    </metadata>
+    <licenseToken>
+      <resource>urn:uuid:00000000-0000-0000-0000-000004812186</resource>
+      <permissions>
+        <display>
+          <duration>1814399</duration>
+        </display>
+        <excerpt>
+          <duration>1814399</duration>
+          <count initial="98" max="98" incrementInterval="18514"/>
+        </excerpt>
+        <print>
+          <duration>1814399</duration>
+          <count initial="196" max="196" incrementInterval="9257"/>
+        </print>
+        <play>
+          <duration>1814399</duration>
+        </play>
+      </permissions>
+    </licenseToken>
+  </resourceItemInfo>
+  <hmac>Tkx8io6exaU/M/dLncVrKj3ML4g=</hmac>
+</fulfillmentToken>
