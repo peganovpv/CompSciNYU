@@ -1,1 +1,0 @@
-Special Topics - Computer Graphics

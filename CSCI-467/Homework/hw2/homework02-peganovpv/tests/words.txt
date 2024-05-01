@@ -1,3 +1,0 @@
-ant bat
-cat dog emu
-fox
